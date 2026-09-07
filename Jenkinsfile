@@ -27,9 +27,11 @@ pipeline {
         //     }
         // }
         stage('SonarQube Analysis') {
-            steps {
-            withSonarQubeEnv('Sonar') {
-            sh 'sonar-scanner'
+    steps {
+        withSonarQubeEnv('Sonar') {
+            withSonarQubeScannerEnv('Sonar') {
+                sh 'sonar-scanner'
+            }
         }
     }
 }
