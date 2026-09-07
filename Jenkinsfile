@@ -45,5 +45,27 @@ pipeline {
                 }
             }
         }
+
+        stage('Docker Build & Push') {
+    steps {
+        withCredentials([usernamePassword(
+            credentialsId: 'dockerhub',
+            usernameVariable: 'DOCKER_USERNAME',
+            passwordVariable: 'DOCKER_PASSWORD'
+        )]) {
+            sh '''
+                echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+                docker build -t $DOCKER_USERNAME/wanderlust-backend:latest ./backend
+                docker build -t $DOCKER_USERNAME/wanderlust-frontend:latest ./frontend
+
+                docker push $DOCKER_USERNAME/wanderlust-backend:latest
+                docker push $DOCKER_USERNAME/wanderlust-frontend:latest
+
+                docker logout
+            '''
+        }
+    }
+}
     }
 }
