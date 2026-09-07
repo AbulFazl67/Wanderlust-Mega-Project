@@ -10,7 +10,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Wanderlust CI Pipeline Started'
+                echo 'github changes'
             }
         }
     }
