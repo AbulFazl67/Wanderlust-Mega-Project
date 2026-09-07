@@ -10,8 +10,14 @@ pipeline {
 
         stage('Test') {
             steps {
-echo 'GitHub + Local changes'
+                echo 'GitHub + Local changes'
             }
         }
+
+        stage('Trivy: file system scan') {
+            steps {
+                sh 'trivy fs . --config /dev/null' 
+            }
+        }       
     }
 }
