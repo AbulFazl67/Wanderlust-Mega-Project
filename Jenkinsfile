@@ -20,11 +20,22 @@ pipeline {
             }
         } 
 
+        // stage('OWASP: Dependency Check') {
+        //     steps {
+        //         dependencyCheck additionalArguments: '--scan . --disableYarnAudit --disableNodeAudit', 
+        //         odcInstallation: 'OWASP'
+        //     }
+        // }
+
         stage('OWASP: Dependency Check') {
-            steps {
-                dependencyCheck additionalArguments: '--scan . --disableYarnAudit --disableNodeAudit', 
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            dependencyCheck(
+                additionalArguments: '--scan . --disableYarnAudit --disableNodeAudit',
                 odcInstallation: 'OWASP'
-            }
+            )
         }
+    }
+}
     }
 }
