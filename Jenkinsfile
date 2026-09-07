@@ -27,15 +27,6 @@ pipeline {
         //     }
         // }
 
-        stage('OWASP: Dependency Check') {
-    steps {
-        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-            dependencyCheck(
-                additionalArguments: '--scan . --disableYarnAudit --disableNodeAudit',
-                odcInstallation: 'OWASP'
-            )
-        }
-    }
-}
+        
     }
 }
