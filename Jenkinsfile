@@ -26,7 +26,13 @@ pipeline {
         //         odcInstallation: 'OWASP'
         //     }
         // }
-
-        
+        stage('SonarQube Analysis') {
+            steps {
+            withSonarQubeEnv('Sonar') {
+            sh 'sonar-scanner'
+        }
+    }
+}
+                  
     }
 }
