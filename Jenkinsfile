@@ -18,6 +18,13 @@ pipeline {
             steps {
                 sh 'trivy fs . --config /dev/null' 
             }
-        }       
+        } 
+
+        stage('OWASP: Dependency Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan . --disableYarnAudit --disableNodeAudit', 
+                odcInstallation: 'OWASP'
+            }
+        }
     }
 }
