@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: fazal6762/wanderlust-backend:21
+          image: fazal6762/wanderlust-backend:22
           ports:
             - containerPort: 8080
 ---
