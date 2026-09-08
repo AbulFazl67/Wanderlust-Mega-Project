@@ -63,10 +63,11 @@ pipeline {
                         docker push $DOCKER_USERNAME/wanderlust-frontend:${BUILD_NUMBER}
 
                         docker logout
-            '''
-        } 
+                    '''
+                }
+            }
+        }
     }
-}
 
     post {
         success {
@@ -77,5 +78,4 @@ pipeline {
             ]
         }
     }
-}
 }
