@@ -67,5 +67,15 @@ pipeline {
         } 
     }
 }
+
+post {
+        success {
+            build job: 'wanderlust-CD',
+            parameters: [
+                string(name: 'FRONTEND_DOCKER_TAG', value: "${BUILD_NUMBER}"),
+                string(name: 'BACKEND_DOCKER_TAG', value: "${BUILD_NUMBER}")
+            ]
+        }
     }
+}
 }
