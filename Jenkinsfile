@@ -68,7 +68,7 @@ pipeline {
     }
 }
 
-post {
+    post {
         success {
             build job: 'wanderlust-CD',
             parameters: [
