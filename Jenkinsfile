@@ -60,7 +60,7 @@ pipeline {
                         docker build -t $DOCKER_USERNAME/wanderlust-frontend:${BUILD_NUMBER} ./frontend
 
                         docker push $DOCKER_USERNAME/wanderlust-backend:${BUILD_NUMBER}
-                        docker push $DOCKER_USERNAME/wanderlust-frontend:${BUILD_NUMBER} ̰
+                        docker push $DOCKER_USERNAME/wanderlust-frontend:${BUILD_NUMBER}
 
                         docker logout
             '''
